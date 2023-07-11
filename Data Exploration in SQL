@@ -1,8 +1,5 @@
 select * from coviddeath
 
-update coviddeath set total_deaths = NUll where date = '2020-02-24' and location = 'Afghanistan';
-update coviddeath set new_deaths = NUll where date = '2020-02-24' and location = 'Afghanistan';
-
 SELECT*FROM coviddeath
 ORDER BY 3,4;
 
@@ -78,7 +75,6 @@ sum(convert(int, vac.new_vaccinations)) over (partition by dea.location)
 FROM PortfolioProject..coviddeath dea join PortfolioProject..covidvaccination vac
 on dea.location = vac.location and dea.date = vac.date;
 
------imp----- 
 SELECT dea.continent, dea.population, dea.location, dea.date, 
 vac.new_vaccinations, vac.total_vaccinations,
 sum(convert(int, vac.new_vaccinations)) over (partition by dea.location order by dea.location,
